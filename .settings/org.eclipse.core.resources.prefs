@@ -1,0 +1,18 @@
+#Sat Sep 11 00:23:28 JST 2010
+eclipse.preferences.version=1
+encoding//src/aws.py=utf-8
+encoding//src/catalog/models.py=utf-8
+encoding//src/catalog/urls.py=utf-8
+encoding//src/catalog/views.py=utf-8
+encoding//src/kay/app.py=utf-8
+encoding//src/kay/lib/werkzeug/_internal.py=utf-8
+encoding//src/kay/lib/werkzeug/debug/__init__.py=utf-8
+encoding//src/kay/lib/werkzeug/utils.py=utf-8
+encoding//src/kay/utils/forms/__init__.py=utf-8
+encoding//src/myconfig.py=utf-8
+encoding//src/register/forms.py=utf-8
+encoding//src/register/models.py=utf-8
+encoding//src/register/urls.py=utf-8
+encoding//src/register/views.py=utf-8
+encoding//src/settings.py=utf-8
+encoding//src/urls.py=utf-8

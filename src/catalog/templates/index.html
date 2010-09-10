@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Top Page - catalog</title>
+</head>
+<body>
+
+<a href="/catalog">全部</a>
+{% for tag in tags %}
+  <a href="/catalog/?tags={{ tag.title }}">{{ tag.title|safe }}</a>
+{% endfor %}
+
+
+  {% if books %}
+    <div id="book_list">
+      	{% for book in books %}
+<a href="/catalog/detail/{{ book.key() }}">
+<img src="{{ book.image_url }}"/>
+</a>
+		{% endfor %}
+	</div>
+  {% endif %}
+
+<br>
+{% if deletion_reserve_flg == True %}
+<a href="/catalog">書籍一覧へ</a>
+{% else %}
+<a href="/catalog/deletion_reserve_list">次回の削除予定一覧へ</a>
+{% endif %}
+</body>
+</html>

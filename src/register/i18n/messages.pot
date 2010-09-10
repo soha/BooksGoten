@@ -1,0 +1,71 @@
+# Translations template for PROJECT.
+# Copyright (C) 2010 Takashi Matsuo
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: tmatsuo@candit.jp\n"
+"POT-Creation-Date: 2010-08-29 16:16+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+#: register/models.py:17
+msgid "asin"
+msgstr ""
+
+#: register/models.py:18
+msgid "isbn"
+msgstr ""
+
+#: register/models.py:19
+msgid "title"
+msgstr ""
+
+#: register/models.py:20
+msgid "author"
+msgstr ""
+
+#: register/models.py:21
+msgid "publisher"
+msgstr ""
+
+#: register/models.py:22
+msgid "publication_date"
+msgstr ""
+
+#: register/models.py:23 register/templates/index.html:24
+msgid "price"
+msgstr ""
+
+#: register/models.py:24
+msgid "image_url"
+msgstr ""
+
+#: register/models.py:26
+msgid "memo"
+msgstr ""
+
+#: register/models.py:28
+msgid "deletion_reserve"
+msgstr ""
+
+#: register/models.py:29
+msgid "lending"
+msgstr ""
+
+#: register/models.py:30
+msgid "updated"
+msgstr ""
+
+#: register/models.py:31
+msgid "created"
+msgstr ""
+

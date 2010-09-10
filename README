@@ -1,0 +1,30 @@
+======
+README
+======
+
+
+About BooksGoten
+------------
+
+BookSGoten is private Book management service.
+This software uses kay-framework.
+http://code.google.com/p/kay-framework/
+
+
+Setup
+-------
+
+rename myconfig.py.sample -> myconfig.py .
+then write myconfig.py your AMAZON ACCESS KEY.
+
+
+License
+-------
+
+BSD License
+
+
+Author
+------
+
+soha <sohatach+git(at)gmail.com>

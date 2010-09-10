@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Top Page - register</title>
+</head>
+<body>
+{% call form() %}
+  {{ form.errors()|safe }}
+{% endcall %} 
+
+
+
+
+  {% if books %}
+    <div id="book_list">
+      	{% for book in books %}
+<img src="{{ book.image_url }}"/><br>
+{{_('asin')}}: {{ book.asin }}<br>	
+{{_('title')}}: {{ book.title }}<br>
+{{_('author')}}: {{ book.author }}<br>
+{{_('publisher')}}: {{ book.publisher }}<br>
+{{_('publication_date')}} {{ book.publication_date }}<br>
+{{_('price')}}: {{ book.price }}<br>
+		{% endfor %}
+	</div>
+  {% endif %}
+</body>
+
+</html>

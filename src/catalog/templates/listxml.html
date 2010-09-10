@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+  {% for book in books %}
+    <book>
+      <key>{{ book.key() }}</key>
+      <isbn>{{ book.isbn }}</isbn>
+      <title>{{ book.title }}</title>
+      <image_url>{{ book.image_url }}</image_url>
+      <author>{{ book.author }}</author>
+      <publisher>{{ book.publisher }}</publisher>
+      <publication_date>{{ book.publication_date }}</publication_date>
+      <price>{{ book.price }}</price>
+      <deletion_reserve>{{ book.deletion_reserve }}</deletion_reserve>
+      <lending>{{ book.lending }}</lending>
+      <updated>{{ book.updated }}</updated>
+      <created>{{ book.created }}</created>
+    </book>
+  {% endfor %}
+</books>

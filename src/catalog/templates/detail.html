@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Detail Page - catalog</title>
+</head>
+<body>
+  {% if book %}
+    <div id="book">
+<img src="{{ book.image_url }}"/>
+<br>
+{{_('asin')}}: {{ book.asin|safe }}<br>	
+{{_('title')}}: {{ book.title|safe }}<br>
+{{_('author')}}: {{ book.author|safe }}<br>
+{{_('publisher')}}: {{ book.publisher|safe }}<br>
+{{_('publication_date')}}: {{ book.publication_date|safe }}<br>
+{{_('price')}}: {{ book.price|safe }}<br>
+{{_('lending')}}: {{ book.lending|safe }}<br>
+<br>
+この書籍のタグ<br>
+<ul>
+{% for tag_title in tag_title_list %}
+  <li>{{ tag_title }}</li>
+{% endfor %}
+</ul>
+	</div>
+  {% else %}
+  <p>情報が取得できませんでした。</p>
+  {% endif %}
+
+<br>
+<form method="POST" action="/catalog/lend/{{ book.key() }}">
+<input type="hidden" name="lending" value="{{ not book.lending }}">
+{% if book.lending %}
+<input type="submit" value="返却">
+{% else %}
+<input type="submit" value="借りる">
+{% endif %}
+</form>
+<br>
+<a href="/catalog">書籍一覧へ</a>&nbsp;
+<a href="/reg/tag_relation/{{ book.key() }}">この書籍のタグ修正</a>
+</body>
+</html>

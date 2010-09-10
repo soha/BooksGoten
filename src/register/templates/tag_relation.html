@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Top Page - register</title>
+</head>
+<body>
+
+<img src="{{ book.image_url }}"/><br>
+
+<form action="/reg/tag_relation/{{ book.key() }}" method="POST">
+<select name="tag_keys" multiple>
+{% for tag in tags %}
+  <option value="{{ tag.key() }}" {% if (tag.key().__str__() in book.tags) %}selected{% endif %}>
+  {{ tag.title }}</option>
+{% endfor %}
+</select>
+<br>
+<input type="submit" value="update">
+</form>
+<br>
+<a href="/catalog">書籍一覧へ</a>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Top Page - register</title>
+</head>
+<body>
+
+{% for err in errors %}
+  {% for e in errors[err] %}
+    {{ err }}:{{ e }}
+  {% endfor %}
+{% endfor %}
+{% call form(action='/reg/') %}
+<br>
+<img src="{{form['image_url'].value}}"/>
+<br>
+  {{ form['isbn'].hidden()|safe }}
+  {{ form['asin'].hidden()|safe }}
+  {{ form['tags'].hidden()|safe }}
+
+  {{ form['image_url'].label()|safe }}
+  {{ form['image_url']()|safe }}
+<br>
+  {{ form['title'].label()|safe }}
+  {{ form['title']()|safe }}
+<br>
+  {{ form['author'].label()|safe }}
+  {{ form['author']()|safe }}
+<br>
+  {{ form['publisher'].label()|safe }}
+  {{ form['publisher']()|safe }}
+<br>
+  {{ form['publication_date'].label()|safe }}
+  {{ form['publication_date']()|safe }}
+<br>
+  {{ form['price'].label()|safe }}
+  {{ form['price']()|safe }}
+<br>
+  {{ form['deletion_reserve'].label()|safe }}
+  {{ form['deletion_reserve']()|safe }}
+<br>
+  {{ form['lending'].label()|safe }}
+  {{ form['lending']()|safe }}
+<br>
+{{ form.default_actions()|safe }}
+{% endcall %} 
+
+</body>
+</html>

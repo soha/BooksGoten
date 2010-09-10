@@ -1,0 +1,30 @@
+from __future__ import division
+from jinja2.runtime import LoopContext, TemplateReference, Macro, Markup, TemplateRuntimeError, missing, concat, escape, markup_join, unicode_join, to_string, TemplateNotFound
+name = '\\listxml.html'
+
+def root(context, environment=environment):
+    l_books = context.resolve('books')
+    if 0: yield None
+    yield u'<?xml version="1.0" encoding="UTF-8" ?>\n<books>\n  '
+    l_book = missing
+    for l_book in l_books:
+        if 0: yield None
+        yield u'\n    <book>\n      <key>%s</key>\n      <isbn>%s</isbn>\n      <title>%s</title>\n      <image_url>%s</image_url>\n      <author>%s</author>\n      <publisher>%s</publisher>\n      <publication_date>%s</publication_date>\n      <price>%s</price>\n      <deletion_reserve>%s</deletion_reserve>\n      <lending>%s</lending>\n      <updated>%s</updated>\n      <created>%s</created>\n    </book>\n  ' % (
+            escape(context.call(environment.getattr(l_book, 'key'))), 
+            escape(environment.getattr(l_book, 'isbn')), 
+            escape(environment.getattr(l_book, 'title')), 
+            escape(environment.getattr(l_book, 'image_url')), 
+            escape(environment.getattr(l_book, 'author')), 
+            escape(environment.getattr(l_book, 'publisher')), 
+            escape(environment.getattr(l_book, 'publication_date')), 
+            escape(environment.getattr(l_book, 'price')), 
+            escape(environment.getattr(l_book, 'deletion_reserve')), 
+            escape(environment.getattr(l_book, 'lending')), 
+            escape(environment.getattr(l_book, 'updated')), 
+            escape(environment.getattr(l_book, 'created')), 
+        )
+    l_book = missing
+    yield u'\n</books>'
+
+blocks = {}
+debug_info = '1=8&3=10&5=13&6=14&7=15&8=16&9=17&10=18&11=19&12=20&13=21&14=22&15=23&16=24&18=27'
