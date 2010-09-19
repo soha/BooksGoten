@@ -14,7 +14,7 @@ class MyUser(User):
 
 class Book(db.Model):
     user = kay.db.OwnerProperty()
-    asin = db.StringProperty(required=True, verbose_name=_(u'asin'))
+    asin = db.StringProperty(required=False, verbose_name=_(u'asin'))
     isbn = db.StringProperty(required=True, verbose_name=_(u'isbn'))
     title = db.StringProperty(required=True, verbose_name=_(u'title'))
     author = db.StringProperty(required=False, verbose_name=_(u'author'))
@@ -22,6 +22,7 @@ class Book(db.Model):
     publication_date = db.DateProperty(verbose_name=_(u'publication_date'))
     price = db.IntegerProperty(required=True, verbose_name=_(u'price'))
     image_url = db.StringProperty(required=True, verbose_name=_(u'image_url'))
+    detail_page_shop_url = db.StringProperty(required=False, verbose_name=_(u'detail_page_shop_url'))
     #not from Amazon
     tags = db.StringListProperty(default=[''])
     memo = db.TextProperty(required=False, verbose_name=_(u'memo'))

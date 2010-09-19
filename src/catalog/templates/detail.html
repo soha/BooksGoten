@@ -7,9 +7,13 @@
 <body>
   {% if book %}
     <div id="book">
+{% if book.detail_page_shop_url %}
+画像クリックでショップへ飛びます<br>
+<a href="{{ book.detail_page_shop_url }}"><img src="{{ book.image_url }}"/></a>
+{% else %}
 <img src="{{ book.image_url }}"/>
+{% endif %}
 <br>
-{{_('asin')}}: {{ book.asin|safe }}<br>	
 {{_('title')}}: {{ book.title|safe }}<br>
 {{_('author')}}: {{ book.author|safe }}<br>
 {{_('publisher')}}: {{ book.publisher|safe }}<br>
