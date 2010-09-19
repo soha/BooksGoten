@@ -1,3 +1,5 @@
 # -*- coding: utf-8 -*-
 SELECT_ACCESS_KEY_ID='hogehoge'
 AWS_ACCESS_KEY_ID='fugafuga'
+RAKUTEN_DEV_ID='hogehoge'
+RAKUTEN_AFFILIATE_ID='fugafuga'
