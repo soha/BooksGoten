@@ -185,12 +185,12 @@ def search_rakuten(request, isbn):
                             for subnode in resnode.getchildren():
                                 if subnode.tag == "Item":
                                     for item in subnode.getchildren():
-                                        if item.tag == "isbn":
-                                            hit = True
-                                            isbn = item.text
+#                                        if item.tag == "isbn":
+#                                            isbn = item.text
                                         if item.tag == "affiliateUrl":
                                             detail_page_shop_url = item.text
                                         if item.tag == "title":
+                                            hit = True
                                             title = item.text
                                         if item.tag == "author":
                                             author = item.text
@@ -248,6 +248,7 @@ def search_rakuten_magazine(request, isbn):
     tree = ET.parse(result)
     root = tree.getroot()
     
+    hit = False
     #isbn=""
     asin=""
     detail_page_shop_url=""
@@ -272,6 +273,7 @@ def search_rakuten_magazine(request, isbn):
                                         if item.tag == "affiliateUrl":
                                             detail_page_shop_url = item.text
                                         if item.tag == "title":
+                                            hit = True
                                             title = item.text
                                         if item.tag == "author":
                                             author = item.text
@@ -284,6 +286,8 @@ def search_rakuten_magazine(request, isbn):
                                         if item.tag == "mediumImageUrl":
                                             image_url = item.text
 
+    if not hit:
+        return render_to_response('register/notfound.html', {'isbn': isbn})
 
     try:
         price = int(price)
