@@ -1,6 +1,6 @@
 from __future__ import division
 from jinja2.runtime import LoopContext, TemplateReference, Macro, Markup, TemplateRuntimeError, missing, concat, escape, markup_join, unicode_join, to_string, TemplateNotFound
-name = '\\search_amazon.html'
+name = '\\search_result.html'
 
 def root(context, environment=environment):
     l_errors = context.resolve('errors')
@@ -42,6 +42,10 @@ def root(context, environment=environment):
             u'\n  ', 
             escape(t_1(context.call(environment.getitem(l_form, 'image_url')))), 
             u'\n<br>\n  ', 
+            escape(t_1(context.call(environment.getattr(environment.getitem(l_form, 'detail_page_shop_url'), 'label')))), 
+            u'\n  ', 
+            escape(t_1(context.call(environment.getitem(l_form, 'detail_page_shop_url')))), 
+            u'\n<br>\n  ', 
             escape(t_1(context.call(environment.getattr(environment.getitem(l_form, 'title'), 'label')))), 
             u'\n  ', 
             escape(t_1(context.call(environment.getitem(l_form, 'title')))), 
@@ -79,4 +83,4 @@ def root(context, environment=environment):
     yield u' \n\n</body>\n</html>'
 
 blocks = {}
-debug_info = '1=10&10=13&11=17&12=20&13=24&14=26&15=27&17=33&19=35&20=37&21=39&23=41&24=43&26=45&27=47&29=49&30=51&32=53&33=55&35=57&36=59&38=61&39=63&41=65&42=67&44=69&45=71&47=73&15=78&48=79'
+debug_info = '1=10&10=13&11=17&12=20&13=24&14=26&15=27&17=33&19=35&20=37&21=39&23=41&24=43&26=45&27=47&29=49&30=51&32=53&33=55&35=57&36=59&38=61&39=63&41=65&42=67&44=69&45=71&47=73&48=75&50=77&15=82&51=83'

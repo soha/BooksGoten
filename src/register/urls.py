@@ -37,6 +37,7 @@ view_groups = [
     Rule('/', endpoint='index', view='register.views.index'),
     Rule('/search_amazon/<isbn>', endpoint='search_amazon', view='register.views.search_amazon'),
     Rule('/search_rakuten/<isbn>', endpoint='search_rakuten', view='register.views.search_rakuten'),
+    Rule('/search_rakuten_magazine/<isbn>', endpoint='search_rakuten_magazine', view='register.views.search_rakuten_magazine'),
     Rule('/tag_relation/<book_key>', endpoint='tag_relation', view='register.views.tag_relation'),
   ),
   BookCRUDViewGroup(),

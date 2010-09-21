@@ -165,7 +165,8 @@ def search_rakuten(request, isbn):
     tree = ET.parse(result)
     root = tree.getroot()
     
-    isbn=""
+    hit = False
+    #isbn=""
     asin=""
     detail_page_shop_url=""
     title=""
@@ -185,7 +186,89 @@ def search_rakuten(request, isbn):
                                 if subnode.tag == "Item":
                                     for item in subnode.getchildren():
                                         if item.tag == "isbn":
+                                            hit = True
                                             isbn = item.text
+                                        if item.tag == "affiliateUrl":
+                                            detail_page_shop_url = item.text
+                                        if item.tag == "title":
+                                            title = item.text
+                                        if item.tag == "author":
+                                            author = item.text
+                                        if item.tag == "publisherName":
+                                            publisher = item.text
+                                        if item.tag == "salesDate":
+                                            publication_date = item.text
+                                        if item.tag == "itemPrice":
+                                            price = item.text
+                                        if item.tag == "mediumImageUrl":
+                                            image_url = item.text
+
+    if not hit:
+        url = url_for('register/index') + "search_rakuten_magazine/" + isbn
+        return redirect(url)
+
+    try:
+        price = int(price)
+    except ValueError:
+        price = 0
+    try:
+        st = datetime.strptime(publication_date,'%Y-%m-%d')
+        pub_date = date(st.year, st.month, st.day)
+    except ValueError:
+        try:
+            st = datetime.strptime(publication_date,'%Y-%m')
+            pub_date = date(st.year, st.month, st.day)
+        except ValueError:
+            pub_date = None
+             
+    book = Book(asin=asin, isbn=isbn,detail_page_shop_url=detail_page_shop_url,title=title,author=author,
+                publisher=publisher,publication_date=pub_date,price=price,image_url=image_url, 
+                tags=[], deletion_reserve=False, lending=False, version=1)
+    form = BookForm(instance=book)
+    
+    return render_to_response('register/search_result.html', {'form': form.as_widget()})
+
+
+def search_rakuten_magazine(request, isbn):
+    import xml.etree.ElementTree as ET
+    import urllib2
+    import logging
+    from datetime import datetime, date
+    
+    XMLNS = '{http://api.rakuten.co.jp/rws/rest/BooksMagazineSearch/2010-03-18}'
+    
+    import myconfig
+
+    request_url = 'http://api.rakuten.co.jp/rws/3.0/rest?'
+    request_url += 'developerId=' + myconfig.RAKUTEN_DEV_ID + '&affiliateId=' + myconfig.RAKUTEN_AFFILIATE_ID 
+    request_url += '&operation=BooksMagazineSearch&version=2010-03-18&jan=' + isbn
+    logging.info(request_url)
+    result = urllib2.urlopen(request_url)
+    
+    tree = ET.parse(result)
+    root = tree.getroot()
+    
+    #isbn=""
+    asin=""
+    detail_page_shop_url=""
+    title=""
+    author=""
+    publisher=""
+    publication_date=""
+    price=""
+    image_url=""
+    err_msg=""
+    for node in root.getchildren():
+        if node.tag == "Body":
+            for bodynode in node.getchildren():
+                if bodynode.tag == XMLNS + "BooksMagazineSearch":
+                    for resnode in bodynode.getchildren():
+                        if resnode.tag == "Items":
+                            for subnode in resnode.getchildren():
+                                if subnode.tag == "Item":
+                                    for item in subnode.getchildren():
+#                                        if item.tag == "isbn":
+#                                           isbn = item.text
                                         if item.tag == "affiliateUrl":
                                             detail_page_shop_url = item.text
                                         if item.tag == "title":
@@ -222,6 +305,7 @@ def search_rakuten(request, isbn):
     form = BookForm(instance=book)
     
     return render_to_response('register/search_result.html', {'form': form.as_widget()})
+
 
 
 

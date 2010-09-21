@@ -11,10 +11,19 @@ def root(context, environment=environment):
     yield u'<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">\n<html>\n<head>\n<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">\n<title>Detail Page - catalog</title>\n</head>\n<body>\n  '
     if l_book:
         if 0: yield None
-        yield u'\n    <div id="book">\n<img src="%s"/>\n<br>\n%s: %s<br>\t\n%s: %s<br>\n%s: %s<br>\n%s: %s<br>\n%s: %s<br>\n%s: %s<br>\n%s: %s<br>\n<br>\n\u3053\u306e\u66f8\u7c4d\u306e\u30bf\u30b0<br>\n<ul>\n' % (
-            escape(environment.getattr(l_book, 'image_url')), 
-            escape(context.call(l__, 'asin')), 
-            escape(t_1(environment.getattr(l_book, 'asin'))), 
+        yield u'\n    <div id="book">\n'
+        if environment.getattr(l_book, 'detail_page_shop_url'):
+            if 0: yield None
+            yield u'\n\u753b\u50cf\u30af\u30ea\u30c3\u30af\u3067\u30b7\u30e7\u30c3\u30d7\u3078\u98db\u3073\u307e\u3059<br>\n<a href="%s"><img src="%s"/></a>\n' % (
+                escape(environment.getattr(l_book, 'detail_page_shop_url')), 
+                escape(environment.getattr(l_book, 'image_url')), 
+            )
+        else:
+            if 0: yield None
+            yield u'\n<img src="%s"/>\n' % (
+                escape(environment.getattr(l_book, 'image_url')), 
+            )
+        yield u'\n<br>\n%s: %s<br>\n%s: %s<br>\n%s: %s<br>\n%s: %s<br>\n%s: %s<br>\n%s: %s<br>\n<br>\n\u3053\u306e\u66f8\u7c4d\u306e\u30bf\u30b0<br>\n<ul>\n' % (
             escape(context.call(l__, 'title')), 
             escape(t_1(environment.getattr(l_book, 'title'))), 
             escape(context.call(l__, 'author')), 
@@ -54,4 +63,4 @@ def root(context, environment=environment):
     )
 
 blocks = {}
-debug_info = '1=11&8=12&10=15&12=16&13=18&14=20&15=22&16=24&17=26&18=28&22=32&23=35&24=38&27=41&29=42&32=43&33=44&34=46&36=51&38=52&42=53'
+debug_info = '1=11&8=12&10=15&12=18&13=23&14=24&15=26&17=27&18=29&19=31&20=33&21=35&22=37&26=41&27=44&28=47&31=50&33=51&36=52&37=53&38=55&40=60&42=61&46=62'
