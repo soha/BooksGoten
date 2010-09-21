@@ -200,7 +200,7 @@ def search_rakuten(request, isbn):
                                             publication_date = item.text
                                         if item.tag == "itemPrice":
                                             price = item.text
-                                        if item.tag == "mediumImageUrl":
+                                        if item.tag == "largeImageUrl":
                                             image_url = item.text
 
     if not hit:
@@ -283,7 +283,7 @@ def search_rakuten_magazine(request, isbn):
                                             publication_date = item.text
                                         if item.tag == "itemPrice":
                                             price = item.text
-                                        if item.tag == "mediumImageUrl":
+                                        if item.tag == "largeImageUrl":
                                             image_url = item.text
 
     if not hit:
