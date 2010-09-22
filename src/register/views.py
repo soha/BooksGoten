@@ -159,6 +159,7 @@ def search_rakuten(request, isbn):
     request_url = 'http://api.rakuten.co.jp/rws/3.0/rest?'
     request_url += 'developerId=' + myconfig.RAKUTEN_DEV_ID + '&affiliateId=' + myconfig.RAKUTEN_AFFILIATE_ID 
     request_url += '&operation=BooksBookSearch&version=2010-03-18&isbn=' + isbn
+    request_url += '&outOfStockFlag=1' #品切れ商品も対象とする
     logging.info(request_url)
     result = urllib2.urlopen(request_url)
     
@@ -242,6 +243,7 @@ def search_rakuten_magazine(request, isbn):
     request_url = 'http://api.rakuten.co.jp/rws/3.0/rest?'
     request_url += 'developerId=' + myconfig.RAKUTEN_DEV_ID + '&affiliateId=' + myconfig.RAKUTEN_AFFILIATE_ID 
     request_url += '&operation=BooksMagazineSearch&version=2010-03-18&jan=' + isbn
+    request_url += '&outOfStockFlag=1' #品切れ商品も対象とする
     logging.info(request_url)
     result = urllib2.urlopen(request_url)
     
