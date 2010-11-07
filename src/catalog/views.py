@@ -39,7 +39,7 @@ from register.forms import BookForm
 
 
 # Create your views here.
-ITEMS_PER_PAGE = 100
+ITEMS_PER_PAGE = 3
 
 
 def index(request):
@@ -114,5 +114,13 @@ def listxml(request):
     books = query.fetch(ITEMS_PER_PAGE)
     return render_to_response('catalog/listxml.html', {'books': books})
 
+def listpagexml(request, page_no):
+    page_no = int(page_no)
+    query = Book.all().order('-created')
+    if not page_no > 0:
+        page_no = 0
+    offset = page_no * ITEMS_PER_PAGE
+    books = query.fetch(ITEMS_PER_PAGE, offset)
+    return render_to_response('catalog/listxml.html', {'books': books})
 
     

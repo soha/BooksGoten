@@ -30,6 +30,7 @@ view_groups = [
     Rule('/lend/<key>', endpoint='lend', view='catalog.views.lend'),
     Rule('/lendbydroid/<key>', endpoint='lendbydroid', view='catalog.views.lendbydroid'),
     Rule('/list.xml', endpoint='listxml', view='catalog.views.listxml'),
+    Rule('/list/<page_no>', endpoint='listpagexml', view='catalog.views.listpagexml'),
   )
 ]
 
