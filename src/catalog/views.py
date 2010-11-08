@@ -121,6 +121,9 @@ def listpagexml(request, page_no):
         page_no = 0
     offset = page_no * ITEMS_PER_PAGE
     books = query.fetch(ITEMS_PER_PAGE, offset)
-    return render_to_response('catalog/listxml.html', {'books': books})
+    total_count = query.count()
+    return render_to_response('catalog/listpagexml.html', {'books': books,
+                                                       'offset_count': offset,
+                                                       'total_count': total_count})
 
     

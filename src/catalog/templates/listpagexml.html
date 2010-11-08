@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+  <offset_count id="offset_count">{{ offset_count }}</offset_count>
+  <total_count id="total_count">{{ total_count }}</total_count>
+  {% for book in books %}
+    <book>
+      <key>{{ book.key() }}</key>
+      <isbn>{{ book.isbn }}</isbn>
+      <title>{{ book.title }}</title>
+      <image_url>{{ book.image_url }}</image_url>
+      <author>{{ book.author }}</author>
+      <publisher>{{ book.publisher }}</publisher>
+      <publication_date>{{ book.publication_date }}</publication_date>
+      <price>{{ book.price }}</price>
+      <deletion_reserve>{{ book.deletion_reserve }}</deletion_reserve>
+      <lending>{{ book.lending }}</lending>
+      <updated>{{ book.updated }}</updated>
+      <created>{{ book.created }}</created>
+      <detail_page_shop_url>{{ book.detail_page_shop_url }}</detail_page_shop_url>
+    </book>
+  {% endfor %}
+</books>
